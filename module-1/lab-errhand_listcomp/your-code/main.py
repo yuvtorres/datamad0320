@@ -10,6 +10,7 @@ print(my_listComprehension)
 """
 import os
 import random
+import sys
 """
 #1. Calculate the square number of the first 20 numbers. Use square as the name of the list.
 # Remember to use list comprehensions and to print your results
@@ -190,23 +191,29 @@ while True:
 
 
 
-"""
 #18. Handle the exception thrown by the code below by using try and except blocks. 
 # Check in provided resources the type of error you may use. 
 
-f = open('testfile','r')
-f.write('Test write this')
+try:
+    f = open('testfile','r')
+    f.write('Test write this')
+except FileNotFoundError:
+    print("The file doesn't exist!!")
 
 
 
-"""
+
 #19. Handle the exceptions that can be thrown by the code below using try and except blocks. 
 #Hint: the file could not exist and the data could not be convertable to int
 
-fp = open('myfile.txt')
-    line = f.readline()
-    i = int(s.strip())
-
+try:
+    fp = open('myfile.txt')
+    line = fp.readline()
+    i = int(line.strip())
+except FileNotFoundError:
+    print("the file 'myfile.txt' is not here") 
+except ValueError:
+    print("the file doesn't have an int value")
 
 
 
@@ -216,8 +223,15 @@ fp = open('myfile.txt')
 # You will probably need to import sys 
 
 def linux_interaction():
-    assert ('linux' in sys.platform), "Function can only run on Linux systems."
+    assert ('darwin' in sys.platform), "Function can only run on apple systems.... the dream of Jobs :)"
     print('Doing something.')
+
+try:
+    linux_interaction()
+except AssertionError:
+    print("Function can only run on apple systems.... the dream of Jobs") 
+
+
 
 
 # Bonus Questions:
@@ -229,19 +243,49 @@ def linux_interaction():
 # Use a while loop with a try,except, else block to account for incorrect inputs.
 
 
+while True:
+    try:
+        number=float(input("Give me the number (must be integer): "))
+        if number%1==0:
+            respuesta=number**2
+            print(f"The square of number is: {respuesta}")
+            break
+        else:
+            print("The number must be an integer!")
+
+    except ValueError:
+        print ("Please insert just numbers (it should be integer)")
 
 
 # 22. Find all of the numbers from 1-1000 that are divisible by any single digit besides 1 (2-9). 
 # Use results as the name of the list 
 
+def div_exac(x):
+    if [e for e in range(2,10) if x%e==0] == []:
+        return False
+    else:
+        return True
 
 
+results = [ x for x in range(1001) if div_exac(x)]
+print(results)
 
+"""
 # 23. Define a customised exception to handle not accepted values. 
 # You have the following user inputs and the Num_of_sections can not be less than 2.
 # Hint: Create a class derived from the pre-defined Exception class in Python
 
-Total_Marks = int(input("Enter Total Marks Scored: ")) 
-Num_of_Sections = int(input("Enter Num of Sections: "))
+while True:
+    try:
+        Total_Marks = int(input("Enter Total Marks Scored: ")) 
+        Num_of_Sections = int(input("Enter Num of Sections: "))
 
-"""
+        if Num_of_Sections<2:
+            print("Please the num of sections must be greater than 1 ")
+        elif Total_Marks<0:
+            print("The Marks Scored must be positive")
+        else:
+            break
+    
+    except ValueError:
+        print ("Please insert just numbers (it should be integer)")
