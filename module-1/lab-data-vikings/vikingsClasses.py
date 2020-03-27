@@ -3,7 +3,10 @@
 
 
 class Soldier:
-    pass
+    def __init__(self,d_health,d_strength):
+        self.health=d_health
+        self.strength=d_strength
+
 
 # Viking
 
