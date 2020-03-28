@@ -61,7 +61,18 @@ class War:
     def __init__(self):
         self.vikingArmy=[]
         self.saxonArmy=[]
-        self.showStatus=""
+        self._showStatus=""
+
+    def showStatus(self):
+        if len(self.vikingArmy)!=0 and len(self.saxonArmy)!=0 :
+            self._showStatus="Vikings and Saxons are still in the thick of battle."
+        elif len(self.saxonArmy)==0:
+            self._showStatus="Vikings have won the war of the century!"
+
+        elif len(self.vikingArmy)==0:
+            self._showStatus="Saxons have fought for their lives and survive another day..."
+
+        return self._showStatus
 
     def addViking(self,viking):
         self.vikingArmy.append(viking)
@@ -72,7 +83,7 @@ class War:
     def vikingAttack(self):
         numsaxons=len(self.saxonArmy)
         numvikings=len(self.vikingArmy)
-        self.saxonArmy[numsaxons-1].receiveDamage(self.vikingArmy[numvikings-1].strength)
+        result=self.saxonArmy[numsaxons-1].receiveDamage(self.vikingArmy[numvikings-1].strength)
         if self.saxonArmy[numsaxons-1].health==0:
             if numsaxons==1:
                 self.saxonArmy.clear()
@@ -80,6 +91,8 @@ class War:
                 return 'A Saxon has died in combat'
             else:
                 del self.saxonArmy[numsaxons-1]
+        else:
+            return result
 
     def saxonAttack(self):
         numsaxons=len(self.saxonArmy)
