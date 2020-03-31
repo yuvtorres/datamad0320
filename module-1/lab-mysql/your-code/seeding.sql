@@ -31,8 +31,8 @@ INSERT INTO Salesperson (`Staff ID`,Name,Store) VALUES
 
 -- Crea Invoices (**) Tuve que cambiar dos datos porque los índices empiezan en 1 y había dos ceros
 
-INSERT INTO Invoice (Invoice_Number, `date`,`Car`,`Customer`,`Sales Person`) VALUES
-('852399038','22-08-2018','1','1','3'),
-('731166526','31-12-2018','3','3','5'),
-('271135104','22-01-2019','2','2','7');
+INSERT INTO Invoice (Invoice_Number, `date`,`Car`,`Customer`,`Sales Person`) VALUES 
+('852399038', STR_TO_DATE('22-08-2018','%d-%m-%Y'),'1','1','3'),
+('731166526',str_to_date('31-12-2018','%d-%m-%Y'),'3','3','5'),
+('271135104',str_to_date('22-01-2019','%d-%m-%Y'),'2','2','7');
 
