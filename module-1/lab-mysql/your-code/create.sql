@@ -22,7 +22,7 @@ USE `lab_mysql` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `lab_mysql`.`Car` (
   `idCar` INT NOT NULL AUTO_INCREMENT,
-  `VIN` INT NOT NULL,
+  `VIN` VARCHAR(45) NOT NULL,
   `Manufacturer` VARCHAR(45) NOT NULL,
   `Model` VARCHAR(45) NOT NULL,
   `Year` INT NOT NULL,
@@ -66,34 +66,35 @@ ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `lab_mysql`.`Invoice`
--- -----------------------------------------------------
+-- ----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `lab_mysql`.`Invoice` (
   `idInvoice` INT NOT NULL AUTO_INCREMENT,
+  `Invoice_Number` VARCHAR(45) NOT NULL, 
   `date` DATE NOT NULL,
-  `Staff ID` INT NOT NULL,
-  `Customer ID` VARCHAR(45) NOT NULL,
-  `VIN` INT NOT NULL,
-  PRIMARY KEY (`idInvoice`, `Customer ID`, `VIN`),
+  `Sales Person` INT NOT NULL,
+  `Customer` INT NOT NULL,
+  `Car` INT NOT NULL,
+  PRIMARY KEY (`idInvoice`, `Customer`, `Car`),
   UNIQUE INDEX `idInvoice_UNIQUE` (`idInvoice` ASC),
-  INDEX `fk_Invoice_Salesperson1_idx` (`Staff ID` ASC),
-  INDEX `fk_Invoice_Customer1_idx` (`Customer ID` ASC),
-  INDEX `fk_Invoice_Car1_idx` (`VIN` ASC),
+  INDEX `fk_Invoice_Salesperson1_idx` (`Sales Person` ASC),
+  INDEX `fk_Invoice_Customer1_idx` (`Customer` ASC),
+  INDEX `fk_Invoice_Car1_idx` (`Car` ASC),
   CONSTRAINT `fk_Invoice_Salesperson1`
-    FOREIGN KEY (`Staff ID`)
-    REFERENCES `lab_mysql`.`Salesperson` (`Staff ID`)
+    FOREIGN KEY (`Sales Person`)
+    REFERENCES `lab_mysql`.`Salesperson` (`idSalesperson`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Invoice_Customer1`
-    FOREIGN KEY (`Customer ID`)
+    FOREIGN KEY (`Customer`)
     REFERENCES `lab_mysql`.`Customer` (`idCustomer`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Invoice_Car1`
-    FOREIGN KEY (`VIN`)
+    FOREIGN KEY (`Car`)
     REFERENCES `lab_mysql`.`Car` (`idCar`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+    ON UPDATE NO ACTION);
+--ENGINE = InnoDB;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
