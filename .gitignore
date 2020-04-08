@@ -3,3 +3,11 @@
 venv/
 .ipynb_checkpoints
 __pycache__/
+module-2/lab-bash/lorem-copy/at.txt
+module-2/lab-bash/lorem-copy/sed.txt
+module-2/lab-bash/lorem-uncompressed/
+*.swp
+.env
+../../.env
+../../.env.swp
+
