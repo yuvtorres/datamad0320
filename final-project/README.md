@@ -12,10 +12,10 @@ La infraestructura a usar para los datos serán bases de datos de Amazon. Y se p
 
 **Módulos de Python**
 
-Flask (API)
-boto3 (almacenamiento de datos)
-pandas (manejo de datos)
-Scikit Learn (Pronósticos)
-Leaflet (Pronósticos)
-Request (Input meterologico y otros)
-BeautifulSoup (Input meterologico y otros)
+- Flask (API)
+- boto3 (almacenamiento de datos)
+- pandas (manejo de datos)
+- Scikit Learn (Pronósticos)
+- Leaflet (Pronósticos)
+- Request (Input meterologico y otros)
+- BeautifulSoup (Input meterologico y otros)
