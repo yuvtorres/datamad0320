@@ -4,9 +4,9 @@ Energia real
 
 **Descripción del Proyecto**
 
-Basic: API que devuelve la matriz de generación eléctrica instantanea, y un pronóstico de esta generación para las próximas horas. Aunque las comercializadoras nos vendan "energía limpia", en realidad nuestro energía viene de la matriz que se encuentré soportando el sistema en ese momento. Ésta matríz se configura a su vez por mérito económico (precio), entre otras cosas. 
+Programación de una API que devuelva la matriz de generación eléctrica instantanea, y un pronóstico de esta generación para las próximas 24 horas. Aunque las comercializadoras nos vendan "energía limpia", en realidad nuestro energía viene de la matriz que se encuentré soportando el sistema en ese momento. Ésta matríz se configura a su vez por mérito económico (precio), entre otras cosas.
 
-EL objetivo de esta API es hacer conciente a la gente de donde viene la energía que consume y darle un pronóstico de tecnologías de generación para las siguientes 24 horas...
+El objetivo de esta API es hacer conciente a la gente de donde viene la energía que consume y darle un pronóstico de tecnologías de generación para las siguientes 24 horas, por si puede de algún modo modificar su consumo, aumentadolo o disminuyendolo según el caso.
 
 La infraestructura a usar para los datos serán bases de datos de Amazon. Y se presentaran con Leaflet.
 
